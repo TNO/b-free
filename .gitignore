@@ -1,0 +1,30 @@
+# Computed data, downloaded inputs and generated figures.
+# Anchored and without a trailing slash, so these match a symlink to a store
+# held elsewhere as well as a real directory.
+/data
+/results
+/figures
+/dist
+*.zarr
+*.zarr.zip
+*.pkl
+*.npz
+*.png
+# Except the small set checked in to illustrate the documentation.
+!docs/images/*.png
+
+# Environments and caches
+.venv/
+.venv-*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local editor and environment files
+.env
+.vscode/
+
+# Clone-local publication config: holds the public remote URL.
+GIT_PUBLICATION_LOCAL.env

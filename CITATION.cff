@@ -1,0 +1,136 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite the article under
+  preferred-citation, and the archived data it reads under references.
+title: >-
+  b-free: analysis code for inferring Gutenberg-Richter earthquake size
+  distributions without estimating b-values
+abstract: >-
+  Derivation, simulation and application code for the b-free estimators: a
+  frequentist estimator that is unbiased for the earthquake size distribution
+  of finite catalogs, rounded or not, and a Bayesian formulation giving
+  closed-form posterior predictive size distributions. Includes the synthetic
+  experiments, the application to the shallow area sources of the 2020
+  European Seismic Hazard Model, the propagation through the hazard integral,
+  and the figure pipeline for the manuscript.
+type: software
+authors:
+  - family-names: Osinga
+    given-names: Sander
+    orcid: "https://orcid.org/0000-0001-5920-2692"
+    email: sander.osinga@tno.nl
+    affiliation: "TNO-GDN Geological Survey of the Netherlands, Utrecht, The Netherlands"
+  - family-names: Kraaijpoel
+    given-names: Dirk A.
+    orcid: "https://orcid.org/0000-0002-3847-6747"
+    affiliation: "TNO-GDN Geological Survey of the Netherlands, Utrecht, The Netherlands"
+  - family-names: Aben
+    given-names: Frans M.
+    orcid: "https://orcid.org/0000-0002-2465-7504"
+    affiliation: "TNO-GDN Geological Survey of the Netherlands, Utrecht, The Netherlands"
+  - family-names: Pluymaekers
+    given-names: Maarten P. D.
+    orcid: "https://orcid.org/0000-0003-0767-5599"
+    affiliation: "TNO-GDN Geological Survey of the Netherlands, Utrecht, The Netherlands"
+license: MIT
+# The public mirror. Zenodo fills its own copy from the GitHub release, but
+# GitHub renders the "Cite this repository" button from here.
+repository-code: "https://github.com/TNO/b-free"
+# TODO: confirm both against the tag at release time; Zenodo takes its own
+# version from the GitHub release rather than from this file.
+version: 1.0.0
+date-released: "2026-10-15"
+keywords:
+  - Gutenberg-Richter
+  - b-value
+  - earthquake size distribution
+  - probabilistic seismic hazard analysis
+  - Bayesian inference
+  - posterior predictive distribution
+  - unbiased estimation
+  - ESHM20
+  - induced seismicity
+preferred-citation:
+  type: article
+  title: >-
+    b-free: Inferring Gutenberg-Richter earthquake size distributions without
+    estimating b-values
+  authors:
+    - family-names: Osinga
+      given-names: Sander
+      orcid: "https://orcid.org/0000-0001-5920-2692"
+    - family-names: Kraaijpoel
+      given-names: Dirk A.
+      orcid: "https://orcid.org/0000-0002-3847-6747"
+    - family-names: Aben
+      given-names: Frans M.
+      orcid: "https://orcid.org/0000-0002-2465-7504"
+    - family-names: Pluymaekers
+      given-names: Maarten P. D.
+      orcid: "https://orcid.org/0000-0003-0767-5599"
+  journal: Bulletin of the Seismological Society of America
+  year: 2026
+  # TODO: volume, issue, pages and doi on acceptance.
+  notes: In review.
+references:
+  - type: data
+    title: >-
+      Data for "b-free: Inferring Gutenberg-Richter earthquake size
+      distributions without estimating b-values"
+    authors:
+      - family-names: Osinga
+        given-names: Sander
+        orcid: "https://orcid.org/0000-0001-5920-2692"
+      - family-names: Kraaijpoel
+        given-names: Dirk A.
+        orcid: "https://orcid.org/0000-0002-3847-6747"
+      - family-names: Aben
+        given-names: Frans M.
+        orcid: "https://orcid.org/0000-0002-2465-7504"
+      - family-names: Pluymaekers
+        given-names: Maarten P. D.
+        orcid: "https://orcid.org/0000-0003-0767-5599"
+    publisher:
+      name: Zenodo
+    year: 2026
+    doi: 10.5281/zenodo.21773391
+  - type: data
+    title: >-
+      Main Datasets of the 2020 Update of the European Seismic Hazard Model
+      (ESHM20)
+    notes: >-
+      Retrieved by analyse_eshm20.py at a pinned revision and verified against
+      stored SHA-256 digests. Licensed CC BY 4.0 and carrying its own citation
+      requirement; not redistributed with this software.
+    authors:
+      - family-names: Danciu
+        given-names: Laurentiu
+      - family-names: Nandan
+        given-names: Shyam
+      - family-names: Reyes
+        given-names: Celso
+      - family-names: Basili
+        given-names: Roberto
+      - family-names: Weatherill
+        given-names: Graeme
+      - family-names: Beauval
+        given-names: Celine
+      - family-names: Rovida
+        given-names: Andrea
+      - family-names: Vilanova
+        given-names: Susana
+      - family-names: Sesetyan
+        given-names: Karin
+      - family-names: Bard
+        given-names: Pierre-Yves
+      - family-names: Cotton
+        given-names: Fabrice
+      - family-names: Wiemer
+        given-names: Stefan
+      - family-names: Giardini
+        given-names: Domenico
+    publisher:
+      name: EFEHR
+    year: 2021
+    doi: 10.12686/ESHM20-MAIN-DATASETS
+    license: CC-BY-4.0

@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bfree"
+version = "0.1.0"
+description = "Direct estimation of Gutenberg-Richter earthquake size distributions, without estimating b-values"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Dirk Kraaijpoel", email = "dirk.kraaijpoel@tno.nl" },
+    { name = "Sander Osinga", email = "sander.osinga@tno.nl" },
+]
+# Bounded at the minors the figures were produced and verified against: numpy
+# 2.3.4 / scipy 1.16.3 reproduce the reference pipeline byte for byte, and
+# 2.4.6 / 1.17.1 do not, differing by a ULP in gammaln and digamma. Raise the
+# bounds deliberately, and regenerate the figures when you do.
+dependencies = [
+    "numpy>=2.3,<2.4",
+    "scipy>=1.16,<1.17",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    { include-group = "analysis" },
+    { include-group = "figures" },
+]
+# The simulation store and the reducer.
+analysis = [
+    "zarr>=3.0",
+]
+
+# Only analyse_eshm20.py and analyse_hazard.py read the ESHM20 source model.
+eshm20 = [
+    "geopandas>=1.0",
+    "openpyxl>=3.1",
+    "pandas>=2.2",
+]
+
+figures = [
+    # Bounded for the same reason as numpy and scipy: 3.11 re-renders every
+    # figure, 1-43% larger at identical dpi, so a committed figure set cannot be
+    # verified across the boundary. Raise it deliberately and regenerate.
+    "matplotlib>=3.10,<3.11",
+    { include-group = "analysis" },
+    { include-group = "eshm20" },
+]
+
+# OpenQuake is not here on purpose: it needs its own interpreter and a --overrides
+# file to drop the source-only gdal requirement. See requirements_hazard.txt.
+
+# Every src/* subpackage must be listed here or it silently fails to install.
+[tool.hatch.build.targets.wheel]
+packages = ["src/bfree"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

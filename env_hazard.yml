@@ -1,0 +1,16 @@
+name: earthquake-size-estimation-hazard
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - jupyterlab=4.4.10
+  - scipy=1.16.3
+  - matplotlib=3.10.8
+  - numpy=2.3.4
+  - zarr=3.1.6
+  - pandas=2.3.3
+  - geopandas=1.1.2
+  - openpyxl=3.1.5
+  # Ground motion models for the hazard-integral analysis (ESHM20 backbone:
+  # KothaEtAl2020ESHM20). Pulls libgdal-core; pip install fails without system GDAL.
+  - openquake.engine=3.25.1

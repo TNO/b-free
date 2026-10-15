@@ -1,0 +1,37 @@
+# Explicit rule selection: ruff's defaults vary between releases, so pinning the
+# set here keeps `ruff check` reproducible for anyone else running it.
+line-length = 100
+target-version = "py311"
+# analyse_hazard.py imports analyse_eshm20, so scripts/ is a source root too.
+src = ["src", "scripts"]
+
+[lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "I",    # import sorting
+    "UP",   # pyupgrade
+    "B",    # bugbear
+    "S",    # bandit - the code carries deliberate `# noqa: S...` suppressions
+    "C4",   # comprehensions
+    "NPY",
+    "PIE",
+    "PTH",  # pathlib over os.path and bare open()
+    "RET",
+    "SIM",
+    "RUF",
+]
+ignore = [
+    "E501",    # line length is reported by the formatter, not worth failing on
+    "RUF003",  # the multiplication sign in comments is intentional
+    "C408",    # dict(a=..., b=...) is used where the keys read as arguments
+]
+
+[lint.per-file-ignores]
+"tests/*" = ["S101"]
+# Zone-level failures are collected and reported at the end rather than aborting
+# a 399-zone run, so the broad excepts are deliberate.
+"scripts/analyse_eshm20.py" = ["BLE001"]
+"scripts/analyse_hazard.py" = ["BLE001"]
+# Asserts are the point in the one-off verification scripts.
+"scripts/analyse_seismostats.py" = ["S101"]

@@ -1,0 +1,9 @@
+# Dependency override for the hazard analysis (see requirements_hazard.txt).
+#
+# openquake-engine declares a dependency on `gdal`, which is source-only on PyPI
+# and needs a system libgdal + gdal-config to build.  Nothing in the hazard
+# analysis touches it: analyse_hazard.py uses openquake.hazardlib.gsim only, and
+# vector I/O goes through geopandas/pyogrio, which ship their own GDAL.
+#
+# The marker below is never satisfiable, so the requirement resolves to nothing.
+gdal; python_version < "0"

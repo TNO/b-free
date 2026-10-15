@@ -1,0 +1,30 @@
+# Optional environment for the hazard-integral analysis (analyse_hazard.py).
+#
+#   uv venv .venv-hazard --python 3.11
+#   uv pip install --python .venv-hazard/bin/python \
+#       --overrides overrides_hazard.txt -r requirements_hazard.txt
+#   uv pip install --python .venv-hazard/bin/python --no-deps -e .
+#   .venv-hazard/bin/python scripts/analyse_hazard.py
+#
+# The editable install makes the local `bfree` package importable.  `--no-deps`
+# preserves the hazard environment's pinned NumPy and SciPy versions.  Zarr is
+# included here because `bfree.store` uses it to read and write analysis results.
+# The --overrides flag is required: it drops openquake's `gdal` requirement,
+# which is source-only on PyPI and cannot build without a system libgdal.
+# See overrides_hazard.txt for why that is safe here.
+#
+# env_hazard.yml is the conda-forge equivalent, where GDAL installs as a binary
+# and no override is needed.  Either route works; this one needs no conda.
+#
+# Versions are those the reported results were produced with.
+
+openquake-engine==3.26.2
+geopandas==1.1.4
+openpyxl==3.1.5
+numpy==2.2.6
+scipy==1.17.1
+zarr==3.1.6
+pandas==3.0.5
+shapely==2.1.2
+pyproj==3.7.2
+h5py==3.16.0
